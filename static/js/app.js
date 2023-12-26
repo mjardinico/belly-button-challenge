@@ -192,6 +192,7 @@ d3.json(url).then(function(data) {
     // Event listener for the dropdown change
     dropdown.on("change", function() {
       updateCharts(d3.select(this).property('value'), samples);
+      console.log(dropdown.property('value'));
     });
 
   }
