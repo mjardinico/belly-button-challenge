@@ -192,7 +192,6 @@ d3.json(url).then(function(data) {
     // Event listener for the dropdown change
     dropdown.on("change", function() {
       updateCharts(d3.select(this).property('value'), samples);
-      console.log(dropdown.property('value'));
     });
 
   }
@@ -200,17 +199,12 @@ d3.json(url).then(function(data) {
   function updateCharts(sampleId, samples) {
     const selectedSample = samples.find(sample => sample.id === sampleId);
 
-    // if (!selectedSample) {
-    //   console.error('Selected sample not found.');
-    //   return;
-    // }
-
     const combinedData = processData(selectedSample);
     renderBarChart(combinedData);
     renderBubbleChart(combinedData);
 
     // Update the metadata display
-    updateMetadataDisplay(sampleId, samples);
+    // updateMetadataDisplay(sampleId, samples);
   }
 
   function processData(sample) {
@@ -262,21 +256,38 @@ d3.json(url).then(function(data) {
     Plotly.newPlot('bubble', [trace], layout);
   }
 
-  function updateMetadataDisplay(sampleId, data) {
-    let metadata = data.metadata.find(d => d.id.toString() === sampleId);
+  // function updateMetadataDisplay(sampleId, data) {
+  //   let metadata = data.metadata.find(d => d.id.toString() === sampleId);
   
-    if (!metadata) {
-      console.error('Metadata for the selected sample not found.');
-      return;
+  //   if (!metadata) {
+  //     console.error('Metadata for the selected sample not found.');
+  //     return;
+  //   }
+  
+  //   let metadataContainer = d3.select("#sample-metadata");
+  //   metadataContainer.html(""); // Clear existing metadata
+  
+  //   Object.entries(metadata).forEach(([key, value]) => {
+  //     metadataContainer.append("p").text(`${key}: ${value}`);
+  //   });
+  // }
+
+  var dataIndicator = [
+    {
+      domain: { x: [0, 1], y: [0, 1] },
+      value: 10,
+      title: { 
+        text: "<b>Belly Button Washing Frequency</b><br><sub style='font-size: 12px;'>Scubs per week</sub></b>", 
+        font: {size: 18} 
+      },
+      type: "indicator",
+      mode: "gauge+number"
     }
+  ];
   
-    let metadataContainer = d3.select("#sample-metadata");
-    metadataContainer.html(""); // Clear existing metadata
+  var layout = { width: 500, height: 400, margin: { t: 0, b: 0 } };
+  Plotly.newPlot('gauge', dataIndicator, layout);
   
-    Object.entries(metadata).forEach(([key, value]) => {
-      metadataContainer.append("p").text(`${key}: ${value}`);
-    });
-  }
 
 });
 
