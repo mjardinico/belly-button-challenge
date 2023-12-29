@@ -6,9 +6,10 @@
 ### Project Overview
 `Welcome to the Belly Button Biodiversity Dashboard project! In this assignment, we will create an interactive dashboard to explore the fascinating world of microbes that colonize human navels. The dataset reveals that a small handful of these microbial species, also known as operational taxonomic units (OTUs), and provides insights into their prevalence among different individuals.`
 
-### Working Files
-1. 
-2. 
+### Working Files (starter code)
+1. index.html
+2. app.js
+3. samples.json (use only as reference). Refer to the URL provide for the actual dataset 
 
 ### Instructions
 1. Use the D3 library to read the `samples.json` from the following URL:
@@ -20,7 +21,7 @@
     - Use `otu_lables` as the hovertext for the chart
 
     <!-- Add an image here -->
-    <!-- ![horizontal bar chart](https://github.com.png) -->
+    ![horizontal bar chart](https://github.com/mjardinico/belly-button-challenge/blob/main/Resources/bar-chart.png)
 
 3. Create a bubble chart that displays each sample.
     - Use `out_ids` for the x values.
@@ -30,12 +31,12 @@
     - Use `otu_labels` for the text values.
 
     <!-- Add an image here -->
-    <!-- ![bubble chart](https://github.com.png) -->
+    ![bubble chart](https://github.com/mjardinico/belly-button-challenge/blob/main/Resources/bubble-chart.png)
 
 4. Display the sample metadata, i.e. an indivual's demographic. Display each key-value of the `metadata` information from the JSON object (`sample.json`):
 
     <!-- Add an image here -->
-    <!-- ![demographic info widget](https://github.com.png) -->
+    ![demographic info widget](https://github.com/mjardinico/belly-button-challenge/blob/main/Resources/drop-down-demographic-info.png)
 
 5. Update the plots when a new sample is selected:
 
