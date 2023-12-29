@@ -41,7 +41,7 @@
 5. Update the angular indicator plot washing frequency when a new sample is selected:
 
     <!-- Add an image here -->
-    <!-- ![Belly Button Biodiversity Dashboard](https://github.com.png) -->
+    <!-- ![Belly Button Biodiversity Dashboard](https://github.com/mjardinico/belly-button-challenge/blob/main/Resources/belly-button-washing-frequency.png) -->
 
 6. Deploy the app to a free static page hosting service, such as GitHub pages. 
 
@@ -49,8 +49,4 @@
     https://mjardinico.github.io/belly-button-challenge/ 
 
 
-
-<!-- `Verified Results`
-- [subject1](https://github.com/mjardinico/.png)
-- [subject2](https://github.com/mjardinico/.png)
-- [subject3](https://github.com/mjardinico/.png) -->
+<!-- END OF CODE -->
