@@ -1,13 +1,16 @@
-// REV 2 OF CODE
+//REV 4 
 const url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json";
 
 // Fetch the JSON data
 d3.json(url).then(function(data) {
-  initializeDropdown(data.samples);
-  updateCharts(data.samples[0].id, data.samples);
+  const metadata = data.metadata;
 
-  // Populate the dropdown with otu_ids
-  function initializeDropdown(samples) {
+  initializeSamplesDropdown(data.samples);
+  updateCharts(data.samples[0].id, data.samples);
+  updateDisplay(metadata, 940);
+
+  // Initialize the dropdown for samples
+  function initializeSamplesDropdown(samples) {
     let dropdown = d3.select("#selDataset");
     samples.forEach(sample => {
       dropdown.append("option")
@@ -17,33 +20,18 @@ d3.json(url).then(function(data) {
 
     // Event listener for the dropdown change
     dropdown.on("change", function() {
-      updateCharts(d3.select(this).property('value'), samples);
+      const selectedId = d3.select(this).property('value');
+      updateCharts(selectedId, samples);
+      updateDisplay(metadata, selectedId);
     });
-
   }
 
-  // Dropdown element section
-  // Assign variable to metada.id
-  const metadata = data.metadata;
-
-  //Select the dropdown element
-  const dropdown = d3.select("#selDataset");
-
-  // Populate the dropdown with options
-  metadata.forEach(item=> {
-    dropdown.append("options").text(item.id).attr("value", item.id);
-  })
-
   // Function to update the display
-  function updateDisplay(selectedId) {
-    // Find the metadata for the selected ID
-    const selectedMetadata = metadata.find(item => item.id == selectedId);
-
-    // Select the container and clear previous content
+  function updateDisplay(metadata, selectedId) {
+    const selectedMetadata = metadata.find(item => item.id == parseInt(selectedId));
     const container = d3.select("#sample-metadata");
     container.html("");
 
-    // Display the new metadata
     container.append("p").text(`ID: ${selectedMetadata.id}`);
     container.append("p").text(`Ethnicity: ${selectedMetadata.ethnicity}`);
     container.append("p").text(`Gender: ${selectedMetadata.gender}`);
@@ -53,27 +41,11 @@ d3.json(url).then(function(data) {
     container.append("p").text(`WFreq: ${selectedMetadata.wfreq}`);
   }
 
-  // Event listener for the dropdown
-  dropdown.on("change", function() {
-    // Get the current selected value
-    const selectedId = d3.select(this).property("value");
-    
-    // Update the display
-    updateDisplay(selectedId);
-  });
-
-  // Initialize display with metadata for ID 940
-  updateDisplay(940);
-
-  
   function updateCharts(sampleId, samples) {
     const selectedSample = samples.find(sample => sample.id === sampleId);
-
     const combinedData = processData(selectedSample);
     renderBarChart(combinedData);
     renderBubbleChart(combinedData);
-
-
   }
 
   function processData(sample) {
@@ -125,8 +97,6 @@ d3.json(url).then(function(data) {
     Plotly.newPlot('bubble', [trace], layout);
   }
 
-  
-  //Create an angular gauge chart
   var dataIndicator = [
     {
       domain: { x: [0, 1], y: [0, 1] },
@@ -145,4 +115,3 @@ d3.json(url).then(function(data) {
   
 
 });
-
