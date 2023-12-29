@@ -7,9 +7,9 @@
 `Welcome to the Belly Button Biodiversity Dashboard project! In this assignment, we will create an interactive dashboard to explore the fascinating world of microbes that colonize human navels. The dataset reveals that a small handful of these microbial species, also known as operational taxonomic units (OTUs), and provides insights into their prevalence among different individuals.`
 
 ### Working Files (starter code)
-1. index.html
-2. app.js
-3. samples.json (use only as reference). Refer to the URL provide for the actual dataset 
+1. [index.html](https://github.com/mjardinico/belly-button-challenge/blob/main/index.html)
+2. [app.js](https://github.com/mjardinico/belly-button-challenge/blob/main/static/js/app.js)
+3. [samples.json](https://github.com/mjardinico/belly-button-challenge/blob/main/samples.json) (use only as reference). Refer to the URL provide for the actual dataset 
 
 ### Instructions
 1. Use the D3 library to read the `samples.json` from the following URL:
