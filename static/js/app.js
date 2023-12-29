@@ -40,7 +40,7 @@ d3.json(url).then(function(data) {
     container.append("p").text(`BBType: ${selectedMetadata.bbtype}`);
     container.append("p").text(`WFreq: ${selectedMetadata.wfreq}`);
 
-    //Update gauge value
+    //Call updateGauge with the wfreq value
     updateGauge(selectedMetadata.wfreq);
   }
 
@@ -100,13 +100,14 @@ d3.json(url).then(function(data) {
     Plotly.newPlot('bubble', [trace], layout);
   }
 
+  // Function to update the angular indicator with the value of metadata.wfreq
   function updateGauge(wfreq) {
   var dataIndicator = [
     {
       domain: { x: [0, 1], y: [0, 1] },
       value: wfreq,
       title: { 
-        text: "<b>Belly Button Washing Frequency</b><br><sub style='font-size: 12px;'>Scubs per week</sub></b>", 
+        text: "<b>Belly Button Washing Frequency</b><br><sub style='font-size: 12px;'>Scrubs per week</sub></b>", 
         font: {size: 18} 
       },
       type: "indicator",

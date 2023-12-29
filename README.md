@@ -38,7 +38,7 @@
     <!-- Add an image here -->
     ![demographic info widget](https://github.com/mjardinico/belly-button-challenge/blob/main/Resources/drop-down-demographic-info.png)
 
-5. Update the plots when a new sample is selected:
+5. Update the angular indicator plot washing frequency when a new sample is selected:
 
     <!-- Add an image here -->
     <!-- ![Belly Button Biodiversity Dashboard](https://github.com.png) -->
