@@ -39,6 +39,9 @@ d3.json(url).then(function(data) {
     container.append("p").text(`Location: ${selectedMetadata.location}`);
     container.append("p").text(`BBType: ${selectedMetadata.bbtype}`);
     container.append("p").text(`WFreq: ${selectedMetadata.wfreq}`);
+
+    //Update gauge value
+    updateGauge(selectedMetadata.wfreq);
   }
 
   function updateCharts(sampleId, samples) {
@@ -97,10 +100,11 @@ d3.json(url).then(function(data) {
     Plotly.newPlot('bubble', [trace], layout);
   }
 
+  function updateGauge(wfreq) {
   var dataIndicator = [
     {
       domain: { x: [0, 1], y: [0, 1] },
-      value: 10,
+      value: wfreq,
       title: { 
         text: "<b>Belly Button Washing Frequency</b><br><sub style='font-size: 12px;'>Scubs per week</sub></b>", 
         font: {size: 18} 
@@ -113,5 +117,5 @@ d3.json(url).then(function(data) {
   var layout = { width: 500, height: 400, margin: { t: 0, b: 0 } };
   Plotly.newPlot('gauge', dataIndicator, layout);
   
-
+  }
 });
